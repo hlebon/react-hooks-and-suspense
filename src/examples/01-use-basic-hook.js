@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 
-// const [count, setCount] = useState(0)
-// const incrementCount = () => setCount(currentCount => currentCount + 1)
-// return <button onClick={incrementCount}>{count}</button>
+function UseCounter(initialState, step) {
+  const [counter, setCount] = useState(initialState);
+  const IncrementCount = () => setCount(currentCount => currentCount + step);
+  return {
+    IncrementCount,
+    counter
+  };
+}
 
 function Counter() {
-  const [counter, setCounter] = useState(0);
-  const IncrementCount = () => {
-    setCounter(currentCount => {
-      return currentCount + 1;
-    });
-  };
-
+  const { counter, IncrementCount } = UseCounter(0, 2);
   return <button onClick={IncrementCount}>{counter}</button>;
 }
 
